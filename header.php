@@ -70,8 +70,16 @@
 							if ($_SESSION['role'] == '0')
 							{
 								echo "<div class='cart box_1'>
-									<p style='color: #fff;'>Вы администратор</p>
+									<p style='color: #fff; float: right;'>Вы администратор</p>
 									<p><a style='color: #fff; float: right; text-decoration:underline;' href='admin/index.php'>Панель управления</a></p>
+									<p><a style='color: #fff; float: right; text-decoration:underline;' href='unauth.php'>Выход</a></p>
+								</div>";
+							}
+							else if ($_SESSION['role'] == '1')
+							{
+								echo "<div class='cart box_1'>
+									<p style='color: #fff; float: right;'>Вы мастер</p>
+									<p><a style='color: #fff; float: right; text-decoration:underline;' href='admin/orders.php'>Панель управления</a></p>
 									<p><a style='color: #fff; float: right; text-decoration:underline;' href='unauth.php'>Выход</a></p>
 								</div>";
 							}
@@ -84,7 +92,6 @@
 											</div>
 											<img src='images/cart-1.png' alt='' />
 										</a>
-										<p><a href='javascript:;' class='simpleCart_empty'>Корзина пуста</a></p>
 										<p><a href='unauth.php' class='simpleCart_empty' style='float: right;'>Выход</a></p>
 										<div class='clearfix'> </div>
 									</div>";

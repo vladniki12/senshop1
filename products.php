@@ -43,7 +43,7 @@
 					  <?php  
 					  if (isset($_GET['id'])) { $id = $_GET['id'];}
 					  $th = "";
-					  if( $id < 5 && $id>0)
+					  if( $id < 6 && $id>0)
 				    	{
 				    	   $th = "WHERE product_type=$id";
 				    	} 
@@ -61,12 +61,13 @@
                                 }
                                 
                                 $image = $myrow['product_image'];
+                                $product_image = "img_product/".$image;
                                 $name = $myrow['product_name'];
                                 $price = $myrow['product_price'];
                                 $id = $myrow['product_id'];
                     	echo "<div class=\"col-md-4 product-left p-left\">
 							<div class=\"product-main simpleCart_shelfItem\">
-								<a href=\"single.php?id=$id\" class=\"mask\"><img class=\"img-responsive zoom-img\" src=\"$image\" alt=\"\"></a>
+								<a href=\"single.php?id=$id\" class=\"mask\"><img class=\"img-responsive zoom-img\" src=\"$product_image\" alt=\"\"></a>
 								<div class=\"product-bottom\">
 									<h3>$name</h3>
 									<h4><span data-product=$id class=\"item_add cart_order_add\"><i></i></span> <span class=\" item_price\">$price P</span></h4>

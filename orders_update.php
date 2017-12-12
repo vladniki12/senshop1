@@ -8,7 +8,7 @@
 	$user_id = $_SESSION['id'];
 	
 	// Get orders
-	$result = mysqli_query($db, "SELECT * FROM `order` LEFT JOIN `product` using(product_id) WHERE customer_id='$user_id' AND in_cart='1' AND completed='0'");
+	$result = mysqli_query($db, "SELECT * FROM `order` LEFT JOIN `product` using(product_id) WHERE customer_id='$user_id' AND in_cart='0' AND completed='0'");
 	$num_rows = mysqli_num_rows($result);
 	
 	$order_stack = array();

@@ -311,16 +311,28 @@ function docReady() {
         $('#myModalEdit').modal('show');
     });
 	
-	$("#add_new_user").click( function(){
+	$("#submit_add").click( function(){
 			sendAjaxForm('add_master', 'add_ajax.php');
 			return false; 
 		}
 	);
-	$(".edit_user").click( function(){
+	$("#submit_close_add_master").click(function(){ 
+	   setTimeout(function() {window.location.reload();}, 500);
+	   
+	   });
+	$("#submit_close_add_user").click(function(){ 
+	   setTimeout(function() {window.location.reload();}, 500);
+	   
+	   });
+	$("#edit_user").click( function(){
 			sendAjaxFormEdit('edit_master', 'edit_ajax.php');
 			return false; 
 		}
 	);
+	$("#submit_close_edit_user").click(function(){ 
+	   setTimeout(function() {window.location.reload();}, 500);
+	   
+	   });
 	$('.delete_user').click( function(e){
 		var id = $(this).attr("id");
 			sendAjaxFormDelete(id, 'delete_ajax.php');
@@ -330,21 +342,163 @@ function docReady() {
 		
 	$("#add_master").trigger('reset');
 	
-	$("#submit_add_new_product").click(function (e) {
-        e.preventDefault();
-			AddNewProduct('add_product', 'add_product_ajax.php');
-			return false; 
-		}
-	);
-	$("#add_product").trigger('reset');
-	
+
 	  $('.add_new_product').click(function (e) {
         e.preventDefault();
 		document.getElementById('add_product').reset();
 		$('#myModalNewProduct').modal('show');
     });
+     $("form[name='add_product']").submit(function(e) {
+    		var formData = new FormData($(this)[0]);
+			AddNewProduct(formData, 'add_product_ajax.php');
+			return false; 
+		}
+	);
+      	
+	$("#add_product").trigger('reset');
+	
+	$("#submit_close_add_product").click(function(){ 
+	   setTimeout(function() {window.location.reload();}, 500);
+	   
+	   });
+	
+	
+	$('.edit_photo_product').click(function (e) {
+         e.preventDefault();
+		var id = $(this).attr("id");
+		var teg = document.getElementsByTagName('TR');
+		for (var i = 0; i < teg.length; i++)
+        {
+            if (teg[i].id == id)
+            {
+                el = teg[i];
+            }
+        }
+		var child = el.childNodes;
+		var product_id = el.childNodes[0].innerHTML;
+		var id_edit = document.getElementById("id_photo");
+		id_edit.value = product_id;
+        $('#myModalEditPhotoProduct').modal('show');
+    });
     
-    
+    $("form[name='edit_photo_product']").submit(function(e) {
+    		var formImage = new FormData($(this)[0]);
+			EditPhotoProduct(formImage, 'edit_photo_ajax.php');
+			return false; 
+		}
+	);
+	$(".edit_photo_product").trigger('reset');
+	
+	$("#submit_close_photo_product").click(function(){ 
+	   setTimeout(function() {window.location.reload();}, 500);
+	   
+	   });
+	
+	$('.edit_product').click(function (e) {
+         e.preventDefault();
+		var cl = $(this);
+		var id = $(this).attr("id");
+		var teg = document.getElementsByTagName('TR');
+		for (var i = 0; i < teg.length; i++)
+        {
+            if (teg[i].id == id)
+            {
+                el = teg[i];
+            }
+        }
+		var child = el.childNodes;
+		var product_id = el.childNodes[0].innerHTML;
+		var name = el.childNodes[2].innerHTML;
+		var cost = el.childNodes[3].innerHTML;
+		var type_product = el.childNodes[4].innerHTML;
+		var material = el.childNodes[5].innerHTML;
+		var description = el.childNodes[6].innerHTML;
+		var id_edit = document.getElementById("id");
+		id_edit.value = product_id;
+		var name_edit = document.getElementById("nameedit");
+		name_edit.value = name;
+		var cost_edit = document.getElementById("costedit");
+		cost_edit.value = cost;
+		var type_prod_edit = document.getElementsByName('type_prod_edit');
+		for (i=0;i<type_prod_edit.length;i++){
+    		var str=type_prod_edit[i].value;
+    		if(str==type_product) {
+    		type_prod_edit[i].checked = true;
+    		}
+}
+		var material_edit = document.getElementById("materialedit");
+		material_edit.value = material;
+		var description_edit = document.getElementById("descriptionedit");
+		description_edit.value = description;
+        $('#myModalEditProduct').modal('show');
+    });
+	
+	$("form[name='edit_product']").submit(function(e) {
+			EditProduct('edit_product', 'edit_prod_ajax.php');
+			return false; 
+		}
+	);
+	$(".edit_product").trigger('reset');
+	
+	$("#submit_close_edit_product").click(function(){ 
+	   setTimeout(function() {window.location.reload();}, 500);
+	   
+	   });
+	
+	$('.delete_product').click( function(e){
+		var id = $(this).attr("id");
+			sendAjaxFormDelete(id, 'delete_product_ajax.php');
+			return false; 
+		}
+	);
+	
+	$('.delete_order').click( function(e){
+		var id = $(this).attr("id");
+			sendAjaxFormDelete(id, 'delete_order_ajax.php');
+			return false; 
+		}
+	);
+	
+	$('.edit_order').click(function (e) {
+         e.preventDefault();
+		var cl = $(this);
+		var id = $(this).attr("id");
+		var teg = document.getElementsByTagName('TR');
+		for (var i = 0; i < teg.length; i++)
+        {
+            if (teg[i].id == id)
+            {
+                el = teg[i];
+            }
+        }
+		var child = el.childNodes;
+		var elements = el.childNodes[6].getElementsByClassName("status");
+		for( var i = 0; i < elements.length; i++ ) 
+			{
+   				 var status = elements[i].id;
+		}
+		var id_edit = document.getElementById("id");
+		id_edit.value = id;
+		var type_order_edit = document.getElementsByName('type_order_edit');
+		for (i=0;i<type_order_edit.length;i++){
+    		var str=type_order_edit[i].value;
+    		if(str==status) {
+    		type_order_edit[i].checked = true;
+    		}
+}
+        $('#myModalEditOrder').modal('show');
+    });
+	
+	$("form[name='edit_order']").submit(function(e) {
+			EditOrder('edit_order', 'edit_order_ajax.php');
+			return false; 
+		}
+	);
+	
+	$("#submit_close_edit_order").click(function(){ 
+	   setTimeout(function() {window.location.reload();}, 500);   
+	   }); 
+	   
     $('#calendar').fullCalendar({
         header: {
             left: 'prev,next today',
@@ -481,11 +635,16 @@ function sendAjaxFormDelete(id, url) {
 }
 function AddNewProduct(ajax_form, url) {
     jQuery.ajax({
+    
+    	
         url:     url, //url ÒÚ‡ÌËˆ˚ (action_ajax_form.php)
-        type:     "POST", //ÏÂÚÓ‰ ÓÚÔ‡‚ÍË
-        data: new FormData(ajax_form), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
-		//contentType: false,       // The content type used when sending data to the server.
-		//cache: false,             // To unable request pages to be cached
+        type:     "POST",
+        //dataType: "json",  //ÏÂÚÓ‰ ÓÚÔ‡‚ÍË
+        data: ajax_form,
+        async: false, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+		contentType: false,       // The content type used when sending data to the server.
+		cache: false, 
+		processData: false,            // To unable request pages to be cached
 		result: null,		// —Â‡ËÎËÁÛÂÏ Ó·˙ÂÍÚ
 		success: function(response) { //ƒ‡ÌÌ˚Â ÓÚÔ‡‚ÎÂÌ˚ ÛÒÔÂ¯ÌÓ
 			result = response;
@@ -504,7 +663,98 @@ function AddNewProduct(ajax_form, url) {
     	error: function(response) { 
 		result_form = "result_form_cancel";
 		$('#myModalCancel').modal('show');// ƒ‡ÌÌ˚Â ÌÂ ÓÚÔ‡‚ÎÂÌ˚
-    		document.getElementById(result_form).innerHTML = result;
+    		document.getElementById(result_form).innerHTML = "Ошибка добавления в базу данных!";
+    	}
+ 	});
+}
+function EditPhotoProduct(ajax_form, url) {
+    jQuery.ajax({    	
+        url:     url, //url ÒÚ‡ÌËˆ˚ (action_ajax_form.php)
+        type:     "POST",
+        //dataType: "json",  //ÏÂÚÓ‰ ÓÚÔ‡‚ÍË
+        data: ajax_form,
+        async: false, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+		contentType: false,       // The content type used when sending data to the server.
+		cache: false, 
+		processData: false,            // To unable request pages to be cached
+		result: null,		// —Â‡ËÎËÁÛÂÏ Ó·˙ÂÍÚ
+		success: function(response) { //ƒ‡ÌÌ˚Â ÓÚÔ‡‚ÎÂÌ˚ ÛÒÔÂ¯ÌÓ
+			result = response;
+			if (result==1) {
+				result_form = "result_form_ok";
+        	document.getElementById(result_form).innerHTML = "Данные в базе данных успешно обновлены!";
+			$('#myModalOk').modal('show');
+			}
+			else {
+				result_form = "result_form_cancel";
+				document.getElementById(result_form).innerHTML = result;
+				$('#myModalCancel').modal('show');
+			}
+    	},
+				
+    	error: function(response) { 
+		result_form = "result_form_cancel";
+		$('#myModalCancel').modal('show');// ƒ‡ÌÌ˚Â ÌÂ ÓÚÔ‡‚ÎÂÌ˚
+    		document.getElementById(result_form).innerHTML = "Ошибка изменения данных в базе данных!";
+    	}
+ 	});
+}
+function EditProduct(ajax_form, url) {
+    jQuery.ajax({
+        url:     url, //url ÒÚ‡ÌËˆ˚ (action_ajax_form.php)
+        type:     "POST", //ÏÂÚÓ‰ ÓÚÔ‡‚ÍË
+        dataType: false, 
+        processData: false,//ÙÓÏ‡Ú ‰‡ÌÌ˚ı
+        data: jQuery("#"+ajax_form).serialize(),
+		result: null,	// —Â‡ËÎËÁÛÂÏ Ó·˙ÂÍÚ
+		success: function(response) { //ƒ‡ÌÌ˚Â ÓÚÔ‡‚ÎÂÌ˚ ÛÒÔÂ¯ÌÓ
+			result = response;
+			if (result==1) {
+				result_form = "result_form_ok";
+        	document.getElementById(result_form).innerHTML = "Данные в базе данных успешно обновлены!";
+			$('#myModalOk').modal('show');
+			}
+			else {
+				result_form = "result_form_cancel";
+				document.getElementById(result_form).innerHTML = result;
+				$('#myModalCancel').modal('show');
+			}
+    	},
+				
+    	error: function(response) { 
+		result_form = "result_form_cancel";
+		$('#myModalCancel').modal('show');// ƒ‡ÌÌ˚Â ÌÂ ÓÚÔ‡‚ÎÂÌ˚
+    		document.getElementById(result_form).innerHTML = "Ошибка добавления в базу данных!";
+    	}
+ 	});
+}
+
+function EditOrder(ajax_form, url) {
+    jQuery.ajax({
+        url:     url, //url ÒÚ‡ÌËˆ˚ (action_ajax_form.php)
+        type:     "POST", //ÏÂÚÓ‰ ÓÚÔ‡‚ÍË
+        dataType: false, 
+        processData: false,//ÙÓÏ‡Ú ‰‡ÌÌ˚ı
+        data: jQuery("#"+ajax_form).serialize(),
+		result: null,	// —Â‡ËÎËÁÛÂÏ Ó·˙ÂÍÚ
+		success: function(response) { //ƒ‡ÌÌ˚Â ÓÚÔ‡‚ÎÂÌ˚ ÛÒÔÂ¯ÌÓ
+			result = response;
+			if (result==1) {
+				result_form = "result_form_ok";
+        	document.getElementById(result_form).innerHTML = "Данные в базе данных успешно обновлены!";
+			$('#myModalOk').modal('show');
+			}
+			else {
+				result_form = "result_form_cancel";
+				document.getElementById(result_form).innerHTML = result;
+				$('#myModalCancel').modal('show');
+			}
+    	},
+				
+    	error: function(response) { 
+		result_form = "result_form_cancel";
+		$('#myModalCancel').modal('show');// ƒ‡ÌÌ˚Â ÌÂ ÓÚÔ‡‚ÎÂÌ˚
+    		document.getElementById(result_form).innerHTML = "Ошибка добавления в базу данных!";
     	}
  	});
 }

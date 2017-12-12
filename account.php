@@ -63,6 +63,36 @@
 		</div>
 	</div>
 	<!--account-end-->
+	<!--start-ckeckout-->
+	<div class="ckeckout">
+		<!--cart update-->
+		<script>
+			$(document).ready(function(c) {
+				updateOrders();
+			});
+		</script>
+		<div class="container">
+			<div class="ckeck-top heading">
+				<h2>Заказы</h2>
+			</div>
+			<div class="ckeckout-top">
+				<div class="cart-items">
+					<h3>Мои заказы (<span class="order-items-count">0</span>)</h3>			
+					<div id="order-list" class="in-check" >
+						<ul class="unit">
+							<li><span>Товар</span></li>
+							<li><span>Наименование товара</span></li>		
+							<li><span>Цена</span></li>
+							<li><span>Доставка</span></li>
+							<li> </li>
+							<div class="clearfix"> </div>
+						</ul>
+					</div>
+				</div>  
+			</div>
+		</div>
+	</div>
+	<!--end-ckeckout-->
 
 <?php
 	require('footer.php');

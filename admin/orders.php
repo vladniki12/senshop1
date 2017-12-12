@@ -1,12 +1,3 @@
-<?php
-    session_start();
-
-    if (empty($_SESSION['id']) || $_SESSION['role'] == 2)
-    {
-        header("Location:../index.php");
-        exit();
-    }
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -24,7 +15,7 @@
     <link href='bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
     <link href='bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css' rel='stylesheet'>
     <link href='css/jquery.noty.css' rel='stylesheet'>
-	<link href="css/style.form.css" rel="stylesheet" media="screen">
+	<link href="css/style.form.product.css" rel="stylesheet" media="screen">
     <link href='css/noty_theme_default.css' rel='stylesheet'>
     <link href='css/elfinder.min.css' rel='stylesheet'>
     <link href='css/elfinder.theme.css' rel='stylesheet'>
@@ -32,8 +23,7 @@
     <link href='css/uploadify.css' rel='stylesheet'>
     <link href='css/animate.min.css' rel='stylesheet'>
     <script src="bower_components/jquery/jquery.min.js"></script>
-    <link rel="shortcut icon" href="img/favicon.ico">
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- library for cookie management -->
 <script src="js/jquery.cookie.js"></script>
@@ -65,22 +55,20 @@
 <script src="js/jquery.history.js"></script>
 <!-- application script for Charisma demo -->
 <script src="js/charisma.js"></script>
+    <link rel="shortcut icon" href="img/favicon.ico">
 
 </head>
 
 <body>
+
    <?php include_once('topbar.php'); ?>
 <div class="ch-container">
     <div class="row">
-<?php include_once('menu.php'); ?>	
-	<?php include_once('content.php'); ?>	
+	<?php include_once('menu.php'); ?>
+	<?php include_once('content_orders.php');?>
 	<?php include_once('footer.php'); ?>
-	<?php include_once('modal.php'); ?>
-
-
+  <?php include_once('modal_orders.php'); ?>
+      
 </div>
-
-
-
 </body>
 </html>

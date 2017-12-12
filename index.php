@@ -65,12 +65,13 @@
                                 }
                                 
                                 $image = $myrow['product_image'];
+                                $product_image = "img_product/".$image;
                                 $name = $myrow['product_name'];
                                 $price = $myrow['product_price'];
                                 $id = $myrow['product_id'];
                     	echo "<div class=\"col-md-3 product-left\">
 							<div class=\"product-main simpleCart_shelfItem\">
-								<a href=\"single.php?id=$id\" class=\"mask\"><img class=\"img-responsive zoom-img\" src=\"$image\" alt=\"\"></a>
+								<a href=\"single.php?id=$id\" class=\"mask\"><img class=\"img-responsive zoom-img\" src=\"$product_image\" alt=\"\"></a>
 								<div class=\"product-bottom\">
 									<h3>$name</h3>
 									<h4><span class=\"item_add cart_order_add\" data-product=$id><i></i></a> <span class=\" item_price\">$price P</span></h4>

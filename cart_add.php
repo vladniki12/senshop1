@@ -16,7 +16,7 @@
     include ("bd.php");
 	
 	// Add new order
-	$result = mysqli_query($db, "INSERT INTO `order` (`order_id`, `customer_id`, `product_id`, `description`, `master_id`, `in_cart`, `completed`) VALUES(NULL, $user_id, $product_id, NULL, 65, 1, 0)");
+	$result = mysqli_query($db, "INSERT INTO `order` (`order_id`, `customer_id`, `product_id`, `description`, `master_id`, `in_cart`, `completed`) VALUES(NULL, $user_id, $product_id, NULL, NULL, 1, 0)");
 	
     // Check for errors
     if ($result=='TRUE')

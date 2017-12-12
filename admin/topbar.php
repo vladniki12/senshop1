@@ -1,4 +1,4 @@
-    <!-- topbar starts -->
+     <!-- topbar starts -->
     <div class="navbar navbar-default" role="navigation">
 
         <div class="navbar-inner">
@@ -10,21 +10,43 @@
             </button>
             <a class="navbar-brand" href="index.php">
                 <span>AdminPanel</span></a>
-
-            <!-- user dropdown starts -->
-            <div class="btn-group pull-right">
+                 <div class="btn-group pull-right">
                 <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> admin</span>
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Admin</a></li>
-                    <li class="divider"></li>
-                    <li><a href="login.html">Выйти</a></li>
-                </ul>
-            </div>
+                    		<?php
+                    		 session_start();
+            include 'connection.php'; 
+                
+             $id_master = $_SESSION['id'];
+             
+              $id_role = $_SESSION['role'];
+                $link = mysqli_connect($host, $user, $password, $database) 
+                    or die("Ошибка" . mysqli_error($link));
+	            mysqli_query($link, "SET NAMES utf8");
+	            mysqli_query($link, "SET CHARACTER SET utf8");
+	            mysqli_query($link, "SET character_set_client = utf8");
+	            mysqli_query($link, "SET character_set_connection = utf8");
+	            mysqli_query($link, "SET character_set_results = utf8");
+	$query = "SELECT `user_login` FROM `user` WHERE `user_id`=$id_master";
+	$res = mysqli_query($link, $query) or die(mysqli_error());
+	while($row = mysqli_fetch_array($res)) {
+	$user_login = $row['user_login'];
+	}
+	 echo '<i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"></span>';
+                    echo '<span class="caret"></span>';
+                echo '</button>';
+                echo '<ul class="dropdown-menu">';
+                    echo '<li><a>'.$user_login.'</a></li>';
+                echo '</ul>';
+            echo '</div>';
+	
+        mysqli_close($link);
+        
+?>
+                    
+                
+                
             <ul class="collapse navbar-collapse nav navbar-nav top-menu">
-                <li><a href="#"><i class="glyphicon glyphicon-globe"></i> Перейти на сайт</a></li>
+                <li><a href="http://eventsun.ru"><i class="glyphicon glyphicon-globe"></i> Перейти на сайт</a></li>
                 
             </ul>
 

@@ -54,7 +54,7 @@
                 </div>
                 <div class="modal-footer">
                     
-					<a href="#" class="btn btn-default" data-dismiss="modal">Закрыть</a>
+					<input id="submit_close_add_user" type="submit" class="btn btn-default" data-dismiss="modal" value="Закрыть">
 					<input id="submit_add" type="submit" class="btn btn-primary" value="Добавить">
                 </div>
 				
@@ -63,6 +63,7 @@
             </div>
         </div>
     </div>
+	</div>
 	
 	
 	  <div class="modal fade" id="myModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2"
@@ -125,12 +126,13 @@
 
                 </div>
                 <div class="modal-footer">
-                    <a href="#" class="btn btn-default" data-dismiss="modal">Закрыть</a>
-					<input id="submit_edit" type="submit" class="btn btn-primary" value="Изменить">
+                    <input id="submit_close_edit_user" type="submit" class="btn btn-default" data-dismiss="modal" value="Закрыть">
+					<input id="edit_user" type="submit" class="btn btn-primary" value="Изменить">
                 </div>
 				</form>
             </div>
         </div>
+    </div>
     </div>
   <div class="modal fade" id="myModalOk" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3"
          aria-hidden="true">
@@ -176,5 +178,3 @@
             </div>
         </div>
     </div>
-	</div>
-	</div>

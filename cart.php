@@ -23,12 +23,6 @@
 	<!--end-breadcrumbs-->
 	<!--start-ckeckout-->
 	<div class="ckeckout">
-		<!--cart update-->
-		<script>
-			$(document).ready(function(c) {
-				//updateCart();
-			});
-		</script>
 		<div class="container">
 			<div class="ckeck-top heading">
 				<h2>Проверка заказа</h2>
@@ -49,7 +43,7 @@
 				</div>  
 			</div>
 			<div class="ckeckout-bottom">
-				<a class="cart-order" href="cart_commit.php">Заказать</a>
+				<a class="cart-order cart_order_commit" style="cursor:pointer;">Заказать</a>
 			</div>
 		</div>
 	</div>

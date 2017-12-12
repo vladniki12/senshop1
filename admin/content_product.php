@@ -30,12 +30,12 @@
     <thead>
     <tr>
         <th>ID</th>
-        <th>Изображение</th>
-        <th>Название</th>
+        <th style="width: 170px;">Изображение</th>
+        <th style="max-width: 100%; width: 180px; ">Название</th>
         <th>Цена</th>
 		<th>Тип</th>
-		<th>Материал</th>
-		<th>Описание</th>
+		<th style="width: 190px;">Материал</th>
+		<th style="width: 330px;">Описание</th>
 		<th>Действие</th>
     </tr>
 	
@@ -56,9 +56,16 @@ $link = mysqli_connect($host, $user, $password, $database)
 	$res = mysqli_query($link, $query) or die(mysqli_error());
 	while($row = mysqli_fetch_array($res)) {
 		$product_int = (int)$row['product_id'];
+		$product_image = "../img_product/".$row['product_image'];
 	echo '<tr id="'.$product_int.'">';
-	echo '<td id="product_id"> '.$row['product_id'].'</td>';
-	echo '<td id="product_image" class="center">'.$row['product_image'].'</td>';
+	echo '<td id="product_id"> '.$row['product_id'].'</td>';	
+	echo '<td id="product_image" style="text-align: center;"><img id="image" src="'.$product_image.'" width="50px" height="50px" style="padding-bottom: 5px;" alt="'.$row['product_image'].'">';
+	echo '</br>';
+	echo '<a class="btn btn-info edit_photo_product" id="'.$row['product_id'].'" href="#">';
+	echo '<i class="glyphicon glyphicon-edit icon-white"></i>';
+	echo ' Изменить';
+	echo '</a>';
+	echo '</td>';
 	echo '<td id="product_name" class="center">'.$row['product_name'].'</td>';
 	echo '<td id="product_price" class="center">'.$row['product_price'].'</td>';
 	echo '<td id="product_type" class="center">'.$row['product_type'].'</td>';

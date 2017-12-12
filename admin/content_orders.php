@@ -3,13 +3,11 @@
 
     if ($_SESSION['role']==0)
     {
-         include_once('menu_admin.php');
+         include_once('content_orders_admin.php');
        
     }
     else if($_SESSION['role']==1)
     {
-         include_once('menu_master.php');
-    
+         include_once('content_orders_master.php');
     }
-    
 ?>

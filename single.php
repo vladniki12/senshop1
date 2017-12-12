@@ -22,7 +22,7 @@
                                 $name = $myrow['product_name'];
                                 $cost = $myrow['product_price'];
                                 $desc = $myrow['product_description'];
-                                $image = $myrow['product_image'];
+                                $image = "img_product/".$myrow['product_image'];
                                 $id_type = $myrow['product_type'];
                                 if ($result = $db->query("SELECT * FROM `product_type` where type_id=$id_type")) 
                                      {
